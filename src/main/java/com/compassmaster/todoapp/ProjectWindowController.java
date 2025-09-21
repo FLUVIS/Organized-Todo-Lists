@@ -6,9 +6,10 @@ import javafx.scene.control.ScrollPane;
 
 public class ProjectWindowController {
     @FXML
-    private Button addProject;
+    public Button addProject;
     @FXML
-    private ScrollPane projectBox;
+    public ScrollPane projectBox;
+
 
 
 }

@@ -7,12 +7,17 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+import static javafx.stage.StageStyle.UTILITY;
+
 public class MainApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("main-stage.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
+        Scene scene = new Scene(fxmlLoader.load(), 600, 700);
         stage.setScene(scene);
+        stage.initStyle(UTILITY);
+        stage.setTitle("To Do");
+        stage.setResizable(false);
         stage.show();
     }
 

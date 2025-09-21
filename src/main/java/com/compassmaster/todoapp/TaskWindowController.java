@@ -8,11 +8,11 @@ import javafx.scene.text.Text;
 
 public class TaskWindowController {
     @FXML
-    private Button backButton, addTaskButton, clearButton;
+    public Button addTaskButton, backButton, clearButton;
     @FXML
-    private Text titleBox;
+    public ScrollPane taskBox;
     @FXML
-    private TextField taskField;
+    public Text titleBox;
     @FXML
-    private ScrollPane taskBox;
+    public TextField taskField;
 }

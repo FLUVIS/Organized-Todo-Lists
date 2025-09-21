@@ -7,8 +7,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.compassmaster.todoapp.ProjectWindowController">
    <top>
       <BorderPane prefHeight="46.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <right>
@@ -26,11 +25,11 @@
             </Text>
          </left>
          <center>
-            <AnchorPane prefHeight="160.0" prefWidth="467.0" BorderPane.alignment="CENTER" />
+            <AnchorPane maxHeight="46.0" maxWidth="200.0" minHeight="0.0" minWidth="0.0" prefHeight="46.0" prefWidth="3.0" BorderPane.alignment="CENTER" />
          </center>
       </BorderPane>
    </top>
    <center>
-      <ScrollPane fx:id="projectBox" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+      <ScrollPane fx:id="projectBox" BorderPane.alignment="CENTER" />
    </center>
 </BorderPane>
