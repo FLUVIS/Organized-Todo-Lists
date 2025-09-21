@@ -1,8 +1,14 @@
 package com.compassmaster.todoapp;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseButton;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.*;
 
@@ -19,7 +25,7 @@ public class AddProjectController {
         String path = name + ".txt";
         File taskFile = new File(path);
         if(taskFile.exists()){
-            // show pop up alert
+            alert();
             addName = false;
         }else{
             try{
@@ -29,6 +35,10 @@ public class AddProjectController {
                     projectFile.createNewFile();
                 }
                 addToFile("projects.txt", name);
+                projectName.setText("");
+                addName = true;
+                Stage stage = (Stage) addButton.getScene().getWindow();
+                stage.close();
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -57,6 +67,37 @@ public class AddProjectController {
             if (out != null) {
                 out.close();
             }
+        }
+    }
+
+    public void alert(){
+        try {
+            //load resource file into new stage
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("duplicate-error.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.initStyle(StageStyle.UTILITY);
+
+            //if user clicks with mouse, close the stage
+            root.setOnMouseClicked(event -> {
+                if (event.getButton() == MouseButton.PRIMARY || event.getButton() == MouseButton.SECONDARY) {
+                    stage.close();
+                }
+            });
+
+            //if focus is lost close the stage
+            stage.focusedProperty().addListener((obs, wasFocused, isNowFocused) -> {
+                if (!isNowFocused) {
+                    stage.close();
+                }
+            });
+
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }
