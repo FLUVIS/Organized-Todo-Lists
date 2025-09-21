@@ -11,7 +11,7 @@
    <top>
       <BorderPane prefHeight="46.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <right>
-            <Button fx:id="addProject" mnemonicParsing="false" text="+" BorderPane.alignment="CENTER">
+            <Button fx:id="addProject" mnemonicParsing="false" onAction="#addProject" text="+" BorderPane.alignment="CENTER">
                <font>
                   <Font size="18.0" />
                </font>
