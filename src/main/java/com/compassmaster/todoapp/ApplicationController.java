@@ -11,31 +11,17 @@ public class ApplicationController {
     @FXML
     public AnchorPane centerStage;
 
-    private ProjectWindowController projectWindowController;
-    private TaskWindowController taskWindowController;
-
 
     @FXML
     public void initialize(){
         try {
-            projectWindowController = new ProjectWindowController();
-            taskWindowController = new TaskWindowController();
-
+            ProjectWindowController projectWindowController = new ProjectWindowController();
+            projectWindowController.setCenterStage(centerStage);
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("project-window.fxml"));
+            fxmlLoader.setController(projectWindowController);
             BorderPane content = fxmlLoader.load();
             centerStage.getChildren().add(content);
         } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void setPageContent(String fxmlFile, Object controller){
-        try{
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(fxmlFile));
-            fxmlLoader.setController(controller);
-            BorderPane content = fxmlLoader.load();
-            centerStage.getChildren().set(1, content);
-        }catch(IOException e){
             e.printStackTrace();
         }
     }
