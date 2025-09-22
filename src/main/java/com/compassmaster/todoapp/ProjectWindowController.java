@@ -80,6 +80,7 @@ public class ProjectWindowController {
                             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("task-window.fxml"));
                             fxmlLoader.setController(taskWindowController);
                             BorderPane content = fxmlLoader.load();
+                            taskWindowController.setTitleBox(name);
                             centerStage.getChildren().set(0, content);
                         } catch (IOException e){
                             e.printStackTrace();

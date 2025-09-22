@@ -21,31 +21,27 @@ public class AddProjectController {
 
     @FXML
     public void add(){
-        String name = projectName.getText();
-        String path = name + ".txt";
-        File taskFile = new File(path);
-        if(taskFile.exists()){
-            alert();
-            addName = false;
-        }else{
-            try{
-                taskFile.createNewFile();
-                File projectFile = new File("projects.txt");
-                if(!projectFile.exists()){
-                    projectFile.createNewFile();
-                }
+        try {
+            String name = projectName.getText();
+            String path = name + ".txt";
+            File taskFile = new File(path);
+            File projectFile = new File("projects.txt");
+            if (!projectFile.exists()) {
+                projectFile.createNewFile();
+            }
+            if (taskFile.exists()) {
+                alert();
+                addName = false;
+            } else {
                 addToFile("projects.txt", name);
                 projectName.setText("");
                 addName = true;
                 Stage stage = (Stage) addButton.getScene().getWindow();
                 stage.close();
-            } catch (IOException e) {
-                e.printStackTrace();
             }
+        }catch (IOException e) {
+            e.printStackTrace();
         }
-
-
-
     }
 
     public void setAddName(boolean b){
@@ -61,6 +57,7 @@ public class AddProjectController {
             out = new PrintWriter(bw);
             out.write(text);
             out.close();
+            bw.close();
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
