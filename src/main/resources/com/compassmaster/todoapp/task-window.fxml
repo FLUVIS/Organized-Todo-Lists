@@ -36,7 +36,7 @@
          <right>
             <VBox alignment="TOP_RIGHT" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button fx:id="backButton" mnemonicParsing="false" text="Back" />
+                  <Button fx:id="backButton" mnemonicParsing="false" onAction="#back" text="Back" />
                </children>
             </VBox>
          </right>

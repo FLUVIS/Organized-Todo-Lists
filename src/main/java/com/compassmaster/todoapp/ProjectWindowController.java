@@ -76,6 +76,7 @@ public class ProjectWindowController {
                             String name = projectButton.getText();
                             TaskWindowController taskWindowController = new TaskWindowController();
                             taskWindowController.setProject(name);
+                            taskWindowController.setCenterStage(centerStage);
                             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("task-window.fxml"));
                             fxmlLoader.setController(taskWindowController);
                             BorderPane content = fxmlLoader.load();
