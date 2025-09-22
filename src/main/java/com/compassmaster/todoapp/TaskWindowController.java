@@ -1,11 +1,9 @@
 package com.compassmaster.todoapp;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
@@ -65,13 +63,15 @@ public class TaskWindowController {
         PrintWriter out = null;
         try {
             String task = taskField.getText();
-            BufferedWriter bw = new BufferedWriter(new FileWriter(project + ".txt", true));
-            out = new PrintWriter(bw);
-            out.write(task + "0");
-            out.close();
-            taskField.setText("");
-            clearTaskBox();
-            fillTaskBox();
+            if(!task.isEmpty()) {
+                BufferedWriter bw = new BufferedWriter(new FileWriter(project + ".txt", true));
+                out = new PrintWriter(bw);
+                out.write(task + "0" + "\n");
+                out.close();
+                taskField.setText("");
+                clearTaskBox();
+                fillTaskBox();
+            }
         } catch (IOException e){
             e.printStackTrace();
         } finally {
@@ -83,7 +83,29 @@ public class TaskWindowController {
 
     @FXML
     public void clearMarkedTasks(){
+        try {
+            ArrayList<String> list = new ArrayList<String>();
+            BufferedReader br = new BufferedReader(new FileReader(project + ".txt"));
+            String task;
+            while((task = br.readLine()) != null){
+                char state = task.charAt(task.length()-1);
+                if(state == '0'){
+                    list.add(task);
+                }
+            }
+            br.close();
 
+            BufferedWriter bw = new BufferedWriter(new FileWriter(project + ".txt"));
+            for(String a: list){
+                bw.write(a + "\n");
+            }
+            bw.close();
+
+            clearTaskBox();
+            fillTaskBox();
+        } catch (IOException e){
+            e.printStackTrace();
+        }
     }
 
     public void clearTaskBox(){

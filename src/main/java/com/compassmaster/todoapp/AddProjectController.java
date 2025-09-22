@@ -33,6 +33,7 @@ public class AddProjectController {
                 alert();
                 addName = false;
             } else {
+                taskFile.createNewFile();
                 addToFile("projects.txt", name);
                 projectName.setText("");
                 addName = true;

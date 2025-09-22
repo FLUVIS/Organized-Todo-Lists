@@ -43,7 +43,7 @@
       </BorderPane>
    </top>
    <center>
-      <ScrollPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <ScrollPane prefWidth="200.0" BorderPane.alignment="CENTER">
          <content>
             <VBox fx:id="taskBox" prefHeight="800.0" prefWidth="585.0" />
          </content></ScrollPane>
