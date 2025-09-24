@@ -70,7 +70,6 @@ public class AddProjectController {
 
     public void alert(){
         try {
-            //load resource file into new stage
             FXMLLoader loader = new FXMLLoader(getClass().getResource("duplicate-error.fxml"));
             Parent root = loader.load();
             Scene scene = new Scene(root);
@@ -79,14 +78,12 @@ public class AddProjectController {
             stage.setResizable(false);
             stage.initStyle(StageStyle.UTILITY);
 
-            //if user clicks with mouse, close the stage
             root.setOnMouseClicked(event -> {
                 if (event.getButton() == MouseButton.PRIMARY || event.getButton() == MouseButton.SECONDARY) {
                     stage.close();
                 }
             });
 
-            //if focus is lost close the stage
             stage.focusedProperty().addListener((obs, wasFocused, isNowFocused) -> {
                 if (!isNowFocused) {
                     stage.close();

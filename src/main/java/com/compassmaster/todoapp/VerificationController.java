@@ -1,13 +1,10 @@
 package com.compassmaster.todoapp;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 public class VerificationController {
-    @FXML
-    public Button yesButton, noButton;
     @FXML
     public Label project;
     public boolean doDelete;

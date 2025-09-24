@@ -5,8 +5,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 
-import java.io.IOException;
-
 public class ApplicationController {
     @FXML
     public AnchorPane centerStage;

@@ -2,7 +2,6 @@ package com.compassmaster.todoapp;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
@@ -15,8 +14,6 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class TaskWindowController {
-    @FXML
-    public Button addTaskButton, backButton, clearButton;
     @FXML
     public VBox taskBox;
     @FXML
