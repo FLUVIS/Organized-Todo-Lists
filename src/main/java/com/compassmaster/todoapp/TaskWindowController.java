@@ -2,7 +2,6 @@ package com.compassmaster.todoapp;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
@@ -16,18 +15,16 @@ import java.util.ArrayList;
 
 public class TaskWindowController {
     @FXML
-    public Button addTaskButton, backButton, clearButton;
+    private VBox taskBox;
     @FXML
-    public VBox taskBox;
+    private Text titleBox;
     @FXML
-    public Text titleBox;
-    @FXML
-    public TextField taskField;
-    public String project;
-    public AnchorPane centerStage;
+    private TextField taskField;
+    private String project;
+    private AnchorPane centerStage;
 
     @FXML
-    public void initialize(){
+    private void initialize(){
         clearTaskBox();
         fillTaskBox();
     }
@@ -45,7 +42,7 @@ public class TaskWindowController {
     }
 
     @FXML
-    public void back(){
+    private void back(){
         try {
             ProjectWindowController projectWindowController = new ProjectWindowController();
             projectWindowController.setCenterStage(centerStage);
@@ -59,7 +56,7 @@ public class TaskWindowController {
     }
 
     @FXML
-    public void addTask(){
+    private void addTask(){
         PrintWriter out = null;
         try {
             String task = taskField.getText();
@@ -82,7 +79,7 @@ public class TaskWindowController {
     }
 
     @FXML
-    public void clearMarkedTasks(){
+    private void clearMarkedTasks(){
         try {
             ArrayList<String> list = new ArrayList<String>();
             BufferedReader br = new BufferedReader(new FileReader(project + ".txt"));
@@ -108,11 +105,11 @@ public class TaskWindowController {
         }
     }
 
-    public void clearTaskBox(){
+    private void clearTaskBox(){
         taskBox.getChildren().clear();
     }
 
-    public void fillTaskBox(){
+    private void fillTaskBox(){
         String path = project + ".txt";
         try {
             BufferedReader br = new BufferedReader(new FileReader(path));
@@ -128,7 +125,7 @@ public class TaskWindowController {
         }
     }
 
-    public void createTask(String task, char state){
+    private void createTask(String task, char state){
         HBox newBox = new HBox();
         Text name = new Text(task);
         CheckBox box = new CheckBox();
@@ -154,7 +151,7 @@ public class TaskWindowController {
         taskBox.getChildren().add(newBox);
     }
 
-    public void updateState(boolean newState, String task){
+    private void updateState(boolean newState, String task){
         ArrayList<String> list = new ArrayList<String>();
         char state = '0';
         char cState = '1';
