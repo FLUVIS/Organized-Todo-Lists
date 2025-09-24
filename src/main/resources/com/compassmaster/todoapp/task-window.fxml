@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <top>
       <BorderPane prefHeight="59.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <left>
@@ -23,8 +23,14 @@
                   </Text>
                   <HBox prefHeight="26.0" prefWidth="199.0">
                      <children>
-                        <TextField fx:id="taskField" prefHeight="25.0" prefWidth="351.0" />
-                        <Button fx:id="addTaskButton" mnemonicParsing="false" onAction="#addTask" text="+" />
+                        <TextField fx:id="taskField" prefHeight="25.0" prefWidth="351.0">
+                           <font>
+                              <Font size="16.0" />
+                           </font></TextField>
+                        <Button fx:id="addTaskButton" mnemonicParsing="false" onAction="#addTask" text="+">
+                           <font>
+                              <Font size="16.0" />
+                           </font></Button>
                      </children>
                   </HBox>
                </children>
@@ -36,19 +42,25 @@
          <right>
             <VBox alignment="TOP_RIGHT" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button fx:id="backButton" mnemonicParsing="false" onAction="#back" text="Back" />
+                  <Button fx:id="backButton" mnemonicParsing="false" onAction="#back" text="Back">
+                     <font>
+                        <Font size="16.0" />
+                     </font></Button>
                </children>
             </VBox>
          </right>
       </BorderPane>
    </top>
    <center>
-      <ScrollPane prefWidth="200.0" BorderPane.alignment="CENTER">
+      <ScrollPane prefWidth="600.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" BorderPane.alignment="CENTER">
          <content>
-            <VBox fx:id="taskBox" prefHeight="800.0" prefWidth="585.0" />
+            <VBox fx:id="taskBox" prefHeight="595.0" prefWidth="585.0" />
          </content></ScrollPane>
    </center>
    <bottom>
-      <Button fx:id="clearButton" mnemonicParsing="false" onAction="#clearMarkedTasks" text="Clear Finished Tasks" BorderPane.alignment="CENTER" />
+      <Button fx:id="clearButton" mnemonicParsing="false" onAction="#clearMarkedTasks" text="Clear Finished Tasks" BorderPane.alignment="CENTER">
+         <font>
+            <Font size="16.0" />
+         </font></Button>
    </bottom>
 </BorderPane>

@@ -6,6 +6,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseButton;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -25,6 +27,23 @@ public class AddProjectController {
 
     public boolean getAddName(){
         return this.addName;
+    }
+
+    @FXML
+    private void initialize(){
+        addButton.sceneProperty().addListener((obs, oldScene, newScene) -> {
+            if (newScene != null) {
+                newScene.addEventFilter(KeyEvent.KEY_PRESSED, keyEvent -> {
+                    KeyCode code = keyEvent.getCode();
+                    if(code == KeyCode.ENTER){
+                        add();
+                    } else if (code == KeyCode.ESCAPE){
+                        Stage stage = (Stage) addButton.getScene().getWindow();
+                        stage.close();
+                    }
+                });
+            }
+        });
     }
 
     @FXML

@@ -2,6 +2,8 @@ package com.compassmaster.todoapp;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 public class VerificationController {
@@ -13,6 +15,19 @@ public class VerificationController {
     @FXML
     private void initialize(){
         setDoDelete(false);
+
+        project.sceneProperty().addListener((obs, oldScene, newScene) -> {
+            if (newScene != null) {
+                newScene.addEventFilter(KeyEvent.KEY_PRESSED, keyEvent -> {
+                    KeyCode code = keyEvent.getCode();
+                    if(code == KeyCode.ENTER){
+                        yes();
+                    } else if (code == KeyCode.ESCAPE){
+                        no();
+                    }
+                });
+            }
+        });
     }
 
     public void setProject(String name){
