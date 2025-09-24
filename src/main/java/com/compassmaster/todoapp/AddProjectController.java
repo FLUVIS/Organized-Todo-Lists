@@ -31,22 +31,24 @@ public class AddProjectController {
     private void add(){
         try {
             String name = projectName.getText();
-            String path = name + ".txt";
-            File taskFile = new File(path);
-            File projectFile = new File("projects.txt");
-            if (!projectFile.exists()) {
-                projectFile.createNewFile();
-            }
-            if (taskFile.exists()) {
-                alert();
-                addName = false;
-            } else {
-                taskFile.createNewFile();
-                addToFile("projects.txt", name);
-                projectName.setText("");
-                addName = true;
-                Stage stage = (Stage) addButton.getScene().getWindow();
-                stage.close();
+            if(!name.isEmpty()) {
+                String path = name + ".txt";
+                File taskFile = new File(path);
+                File projectFile = new File("projects.txt");
+                if (!projectFile.exists()) {
+                    projectFile.createNewFile();
+                }
+                if (taskFile.exists()) {
+                    alert();
+                    addName = false;
+                } else {
+                    taskFile.createNewFile();
+                    addToFile("projects.txt", name);
+                    projectName.setText("");
+                    addName = true;
+                    Stage stage = (Stage) addButton.getScene().getWindow();
+                    stage.close();
+                }
             }
         }catch (IOException e) {
             e.printStackTrace();
