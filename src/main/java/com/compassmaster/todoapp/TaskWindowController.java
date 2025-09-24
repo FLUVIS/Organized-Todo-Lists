@@ -5,6 +5,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
@@ -29,6 +31,13 @@ public class TaskWindowController {
     private void initialize(){
         clearTaskBox();
         fillTaskBox();
+
+        centerStage.getScene().addEventFilter(KeyEvent.KEY_PRESSED, keyEvent -> {
+            KeyCode code = keyEvent.getCode();
+            if(code == KeyCode.ENTER){
+                addTask();
+            }
+        });
     }
 
     public void setProject(String p){
