@@ -31,7 +31,7 @@
       </BorderPane>
    </top>
    <center>
-      <ScrollPane prefHeight="654.0" prefWidth="585.0" BorderPane.alignment="CENTER">
+      <ScrollPane prefHeight="654.0" prefWidth="585.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" BorderPane.alignment="CENTER">
          <content>
             <VBox fx:id="projectBox" />
          </content></ScrollPane>

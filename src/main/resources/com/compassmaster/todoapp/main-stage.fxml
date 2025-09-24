@@ -7,4 +7,13 @@
    <center>
       <AnchorPane fx:id="centerStage" prefHeight="487.0" prefWidth="409.0" BorderPane.alignment="CENTER" />
    </center>
+   <left>
+      <AnchorPane prefWidth="10.0" BorderPane.alignment="CENTER" />
+   </left>
+   <right>
+      <AnchorPane prefWidth="10.0" BorderPane.alignment="CENTER" />
+   </right>
+   <bottom>
+      <AnchorPane prefHeight="10.0" BorderPane.alignment="CENTER" />
+   </bottom>
 </BorderPane>
