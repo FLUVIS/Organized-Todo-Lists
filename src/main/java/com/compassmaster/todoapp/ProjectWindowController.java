@@ -15,20 +15,24 @@ import java.util.ArrayList;
 
 public class ProjectWindowController {
     @FXML
-    public VBox projectBox;
+    private VBox projectBox;
 
     private AddProjectController addProjectController;
-    public AnchorPane centerStage;
+    private AnchorPane centerStage;
+
+    public void setCenterStage(AnchorPane stage){
+        this.centerStage = stage;
+    }
 
     @FXML
-    public void initialize(){
+    private void initialize(){
         addProjectController = new AddProjectController();
         clearProjects();
         fillProjects();
     }
 
     @FXML
-    public void addProject(){
+    private void addProject(){
         try{
             FXMLLoader loader = new FXMLLoader(getClass().getResource("add-project-window.fxml"));
             loader.setController(addProjectController);
@@ -41,7 +45,7 @@ public class ProjectWindowController {
             addStage.initStyle(StageStyle.UTILITY);
 
             addStage.setOnHidden(windowEvent -> {
-                if(addProjectController.addName == true) {
+                if(addProjectController.getAddName()) {
                     clearProjects();
                     fillProjects();
                 }
@@ -54,11 +58,11 @@ public class ProjectWindowController {
         }
     }
 
-    public void clearProjects(){
+    private void clearProjects(){
         projectBox.getChildren().clear();
     }
 
-    public void fillProjects(){
+    private void fillProjects(){
         try{
             String file = "projects.txt";
             File f = new File(file);
@@ -120,7 +124,7 @@ public class ProjectWindowController {
             verificationController.setStage(stage);
             stage.show();
             stage.setOnHidden(windowEvent -> {
-                if(verificationController.doDelete){
+                if(verificationController.getDoDelete()){
                     deleteProject(project);
                     clearProjects();
                     fillProjects();
@@ -131,11 +135,7 @@ public class ProjectWindowController {
         }
     }
 
-    public void setCenterStage(AnchorPane stage){
-        this.centerStage = stage;
-    }
-
-    public void deleteProject(String name){
+    private void deleteProject(String name){
         try {
             String file = name + ".txt";
             ArrayList<String> pList = new ArrayList<String>();

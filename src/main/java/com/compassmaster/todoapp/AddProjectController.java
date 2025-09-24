@@ -14,13 +14,21 @@ import java.io.*;
 
 public class AddProjectController {
     @FXML
-    public TextField projectName;
+    private TextField projectName;
     @FXML
-    public Button addButton;
-    public boolean addName;
+    private Button addButton;
+    private boolean addName;
+
+    public void setAddName(boolean b){
+        this.addName = b;
+    }
+
+    public boolean getAddName(){
+        return this.addName;
+    }
 
     @FXML
-    public void add(){
+    private void add(){
         try {
             String name = projectName.getText();
             String path = name + ".txt";
@@ -45,11 +53,7 @@ public class AddProjectController {
         }
     }
 
-    public void setAddName(boolean b){
-        this.addName = b;
-    }
-
-    public void addToFile(String path, String name){
+    private void addToFile(String path, String name){
         PrintWriter out = null;
         try {
             String text = name + "\n";
@@ -68,7 +72,7 @@ public class AddProjectController {
         }
     }
 
-    public void alert(){
+    private void alert(){
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("duplicate-error.fxml"));
             Parent root = loader.load();
