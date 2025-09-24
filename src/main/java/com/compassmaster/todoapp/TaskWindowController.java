@@ -36,6 +36,8 @@ public class TaskWindowController {
             KeyCode code = keyEvent.getCode();
             if(code == KeyCode.ENTER){
                 addTask();
+            } else if (code == KeyCode.ESCAPE) {
+                back();
             }
         });
     }
