@@ -127,10 +127,12 @@ public class TaskWindowController {
         try {
             BufferedReader br = new BufferedReader(new FileReader(path));
             String line;
+            int id = 1;
             while((line = br.readLine()) != null){
                 String task = line.substring(0, line.length()-1);
                 char state = line.charAt(line.length()-1);
-                createTask(task, state);
+                createTask(task, state, id);
+                id++;
             }
             br.close();
         } catch(IOException e){
@@ -138,7 +140,7 @@ public class TaskWindowController {
         }
     }
 
-    private void createTask(String task, char state){
+    private void createTask(String task, char state, int id){
         HBox newBox = new HBox(10);
         newBox.setAlignment(Pos.CENTER_LEFT);
 
@@ -146,6 +148,7 @@ public class TaskWindowController {
         text.setFont(Font.font(16));
 
         CheckBox box = new CheckBox();
+        box.setId(Integer.toString(id));
         box.setPrefSize(16, 16);
 
         newBox.getChildren().addAll(text, box);
@@ -167,29 +170,28 @@ public class TaskWindowController {
             } else{
                 text.setStyle("-fx-strikethrough: false;");
             }
-            updateState(box.isSelected(), task);
+            updateState(box.isSelected(), id);
         });
         taskBox.getChildren().add(newBox);
     }
 
-    private void updateState(boolean newState, String task){
+    private void updateState(boolean newState, int id){
         ArrayList<String> list = new ArrayList<String>();
         char state = '0';
-        char cState = '1';
         if(newState){
             state = '1';
-            cState = '0';
         }
 
         try{
             BufferedReader br = new BufferedReader(new FileReader(project + ".txt"));
             String t;
+            int i = 1;
             while((t = br.readLine()) != null){
-                if(t.equals(task + cState)){
-                    list.add(task + state);
-                } else {
-                    list.add(t);
+                if(i == id) {
+                    t = t.substring(0, t.length()-1) + state;
                 }
+                list.add(t);
+                i++;
             }
             br.close();
 
