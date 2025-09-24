@@ -15,8 +15,6 @@ import java.util.ArrayList;
 
 public class ProjectWindowController {
     @FXML
-    public Button addProject;
-    @FXML
     public VBox projectBox;
 
     private AddProjectController addProjectController;
@@ -61,68 +59,75 @@ public class ProjectWindowController {
     }
 
     public void fillProjects(){
-        String file = "projects.txt";
-        File f = new File(file);
-        if(f.exists()){
-            try{
+        try{
+            String file = "projects.txt";
+            File f = new File(file);
+            if(f.exists()){
                 BufferedReader br = new BufferedReader(new FileReader(file));
                 String project;
                 while((project = br.readLine()) != null){
-                    HBox newBox = new HBox();
-                    newBox.setId(project);
-                    Button projectButton = new Button(project);
-                    projectButton.setOnAction(event-> {
-                        try {
-                            String name = projectButton.getText();
-                            TaskWindowController taskWindowController = new TaskWindowController();
-                            taskWindowController.setProject(name);
-                            taskWindowController.setCenterStage(centerStage);
-                            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("task-window.fxml"));
-                            fxmlLoader.setController(taskWindowController);
-                            BorderPane content = fxmlLoader.load();
-                            taskWindowController.setTitleBox(name);
-                            centerStage.getChildren().set(0, content);
-                        } catch (IOException e){
-                            e.printStackTrace();
-                        }
-                    });
-                    Button deleteProjectButton = new Button("X");
-                    deleteProjectButton.setId(project + "d");
-                    deleteProjectButton.setOnAction(event -> {
-                            String temp = deleteProjectButton.getId();
-                            String name = temp.substring(0, temp.length()-1);
-                            try {
-                                FXMLLoader loader = new FXMLLoader(getClass().getResource("verification-window.fxml"));
-                                VerificationController verificationController = new VerificationController();
-                                loader.setController(verificationController);
-                                Parent root = loader.load();
-                                Scene scene = new Scene(root);
-                                Stage stage = new Stage();
-                                stage.setScene(scene);
-                                stage.setResizable(false);
-                                stage.initStyle(StageStyle.UNDECORATED);
-                                stage.initModality(Modality.APPLICATION_MODAL);
-                                verificationController.setProject(name);
-                                verificationController.setStage(stage);
-                                stage.show();
-                                stage.setOnHidden(windowEvent -> {
-                                    if(verificationController.doDelete){
-                                        deleteProject(name);
-                                        clearProjects();
-                                        fillProjects();
-                                    }
-                                });
-                            } catch (IOException e){
-                                e.printStackTrace();
-                            }
-                    });
-                    newBox.getChildren().addAll(projectButton, deleteProjectButton);
-
-                    projectBox.getChildren().add(newBox);
+                    createHBox(project);
                 }
-            } catch(IOException e){
-                e.printStackTrace();
+                br.close();
             }
+        } catch(IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    private void createHBox(String project){
+        HBox newBox = new HBox();
+        Button projectButton = new Button(project);
+        projectButton.setOnAction(event -> {
+            openProject(project);
+        });
+        Button deleteProjectButton = new Button("X");
+        deleteProjectButton.setOnAction(event -> {
+            verify(project);
+        });
+        newBox.getChildren().addAll(projectButton, deleteProjectButton);
+        projectBox.getChildren().add(newBox);
+    }
+
+    private void openProject(String project){
+        try {
+            TaskWindowController taskWindowController = new TaskWindowController();
+            taskWindowController.setProject(project);
+            taskWindowController.setCenterStage(centerStage);
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("task-window.fxml"));
+            fxmlLoader.setController(taskWindowController);
+            BorderPane content = fxmlLoader.load();
+            taskWindowController.setTitleBox(project);
+            centerStage.getChildren().set(0, content);
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    private void verify(String project){
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("verification-window.fxml"));
+            VerificationController verificationController = new VerificationController();
+            loader.setController(verificationController);
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.initStyle(StageStyle.UNDECORATED);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            verificationController.setProject(project);
+            verificationController.setStage(stage);
+            stage.show();
+            stage.setOnHidden(windowEvent -> {
+                if(verificationController.doDelete){
+                    deleteProject(project);
+                    clearProjects();
+                    fillProjects();
+                }
+            });
+        } catch (IOException e){
+            e.printStackTrace();
         }
     }
 
@@ -142,10 +147,6 @@ public class ProjectWindowController {
                 }
             }
             br.close();
-
-            File f = new File("projects.txt");
-            f.delete();
-            f.createNewFile();
 
             BufferedWriter bw = new BufferedWriter(new FileWriter("projects.txt"));
             for(String a: pList){
