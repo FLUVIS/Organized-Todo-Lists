@@ -2,6 +2,7 @@ package com.compassmaster.todoapp;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -81,15 +82,28 @@ public class ProjectWindowController {
 
     private void createHBox(String project){
         HBox newBox = new HBox();
+
+        HBox pBox = new HBox();
         Button projectButton = new Button(project);
+        projectButton.setStyle("-fx-font-size: 16");
         projectButton.setOnAction(event -> {
             openProject(project);
         });
+        pBox.getChildren().add(projectButton);
+        pBox.setAlignment(Pos.CENTER_LEFT);
+        pBox.setPrefWidth(292);
+
+        HBox dBox = new HBox();
         Button deleteProjectButton = new Button("X");
+        deleteProjectButton.setStyle("-fx-font-size: 16");
         deleteProjectButton.setOnAction(event -> {
             verify(project);
         });
-        newBox.getChildren().addAll(projectButton, deleteProjectButton);
+        dBox.getChildren().add(deleteProjectButton);
+        dBox.setAlignment(Pos.CENTER_RIGHT);
+        dBox.setPrefWidth(292);
+
+        newBox.getChildren().addAll(pBox, dBox);
         projectBox.getChildren().add(newBox);
     }
 

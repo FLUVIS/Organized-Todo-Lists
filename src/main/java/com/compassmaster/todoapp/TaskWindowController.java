@@ -2,12 +2,14 @@ package com.compassmaster.todoapp;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
 import java.io.*;
@@ -126,25 +128,33 @@ public class TaskWindowController {
     }
 
     private void createTask(String task, char state){
-        HBox newBox = new HBox();
-        Text name = new Text(task);
+        HBox newBox = new HBox(10);
+        newBox.setAlignment(Pos.CENTER_LEFT);
+
+        Text text = new Text(task);
+        text.setFont(Font.font(16));
+
         CheckBox box = new CheckBox();
-        newBox.getChildren().addAll(name,box);
+        box.setPrefSize(16, 16);
+
+        newBox.getChildren().addAll(text, box);
+
+
         if(state == '0'){
             box.setSelected(false);
         }else{
             box.setSelected(true);
         }
         if(box.isSelected()){
-            name.setStyle("-fx-strikethrough: true;");
+            text.setStyle("-fx-strikethrough: true;");
         } else{
-            name.setStyle("-fx-strikethrough: false;");
+            text.setStyle("-fx-strikethrough: false;");
         }
         box.setOnAction(ActionEvent -> {
             if(box.isSelected()){
-                name.setStyle("-fx-strikethrough: true;");
+                text.setStyle("-fx-strikethrough: true;");
             } else{
-                name.setStyle("-fx-strikethrough: false;");
+                text.setStyle("-fx-strikethrough: false;");
             }
             updateState(box.isSelected(), task);
         });
