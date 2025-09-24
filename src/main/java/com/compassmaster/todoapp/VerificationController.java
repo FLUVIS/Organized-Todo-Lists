@@ -22,7 +22,9 @@ public class VerificationController {
                     KeyCode code = keyEvent.getCode();
                     if(code == KeyCode.ENTER){
                         yes();
-                    } 
+                    } else if (code == KeyCode.ESCAPE){
+                        no();
+                    }
                 });
             }
         });
