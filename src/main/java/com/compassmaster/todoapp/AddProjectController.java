@@ -37,6 +37,9 @@ public class AddProjectController {
                     KeyCode code = keyEvent.getCode();
                     if(code == KeyCode.ENTER){
                         add();
+                    } else if (code == KeyCode.ESCAPE){
+                        Stage stage = (Stage) addButton.getScene().getWindow();
+                        stage.close();
                     }
                 });
             }
