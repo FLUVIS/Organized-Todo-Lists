@@ -46,6 +46,7 @@ public class AddProjectController {
 
                 Random random = new Random();
                 addButton.getStyleClass().add("button" + Integer.toString(random.nextInt(5) + 1));
+                projectName.getStyleClass().add("field");
             }
         });
     }

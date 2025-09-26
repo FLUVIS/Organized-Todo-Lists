@@ -1,3 +1,5 @@
+/* BUTTON STYLING */
+
 .button1 {
     -fx-background-color: transparent;
     -fx-border-image-source: url("images/ButtonTexture1.png");
@@ -51,7 +53,7 @@
 .button3 {
     -fx-background-color: transparent;
     -fx-border-image-source: url("images/ButtonTexture3.png");
-    -fx-border-image-slice: 20 20 20 20 fill;
+    -fx-border-image-slice: 20 30 20 20 fill;
     -fx-border-image-width: 10 10 10 10;
     -fx-border-image-repeat: stretch;
     -fx-padding: 0 5 0 0;
@@ -153,4 +155,16 @@
     -fx-background-repeat: no-repeat;
     -fx-background-size: 100% auto;
     -fx-background-position: center;
+}
+
+/* TEXTFIELD STYLING */
+
+.field {
+    -fx-background-color: transparent;
+    -fx-border-image-source: url("images/Field.png");
+    -fx-border-image-slice: 20 20 20 20 fill;
+    -fx-border-image-width: 10 10 10 10;
+    -fx-border-image-repeat: stretch;
+    -fx-padding: 0 0 0 0;
+    -fx-font-size: 16;
 }

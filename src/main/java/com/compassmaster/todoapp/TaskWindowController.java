@@ -14,7 +14,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -52,6 +51,7 @@ public class TaskWindowController {
                 addTaskButton.getStyleClass().add("button" + Integer.toString(random.nextInt(5) + 1));
                 backButton.getStyleClass().add("button" + Integer.toString(random.nextInt(5) + 1));
                 clearButton.getStyleClass().add("button" + Integer.toString(random.nextInt(5) + 1));
+                taskField.getStyleClass().add("field");
             }
         });
     }
