@@ -164,6 +164,7 @@ public class TaskWindowController {
         CheckBox box = new CheckBox();
         box.setId(Integer.toString(id));
         box.setPrefSize(16, 16);
+        box.getStyleClass().add("check");
 
         newBox.getChildren().addAll(text, box);
 
