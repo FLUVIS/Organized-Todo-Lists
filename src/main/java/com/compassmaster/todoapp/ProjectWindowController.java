@@ -13,8 +13,11 @@ import javafx.stage.StageStyle;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class ProjectWindowController {
+    @FXML
+    private Button addProject;
     @FXML
     private VBox projectBox;
 
@@ -30,6 +33,13 @@ public class ProjectWindowController {
         addProjectController = new AddProjectController();
         clearProjects();
         fillProjects();
+
+        addProject.sceneProperty().addListener((obs, oldScene, newScene) -> {
+            if (newScene != null) {
+                Random random = new Random();
+                addProject.getStyleClass().add("button" + Integer.toString(random.nextInt(5) + 1));
+            }
+        });
     }
 
     @FXML
@@ -82,26 +92,30 @@ public class ProjectWindowController {
 
     private void createHBox(String project){
         HBox newBox = new HBox();
+        Random random = new Random();
 
         HBox pBox = new HBox();
         Button projectButton = new Button(project);
-        projectButton.setStyle("-fx-font-size: 16");
+        int pb = random.nextInt(5) + 1;
+        projectButton.getStyleClass().add("button" + Integer.toString(pb));
         projectButton.setOnAction(event -> {
             openProject(project);
         });
         pBox.getChildren().add(projectButton);
         pBox.setAlignment(Pos.CENTER_LEFT);
-        pBox.setPrefWidth(292);
+        pBox.setPrefWidth(560);
 
         HBox dBox = new HBox();
+        int db = random.nextInt(5) + 1;
         Button deleteProjectButton = new Button("X");
-        deleteProjectButton.setStyle("-fx-font-size: 16");
+        deleteProjectButton.setMinHeight(deleteProjectButton.getWidth());
+        deleteProjectButton.getStyleClass().add("button" + Integer.toString(db));
         deleteProjectButton.setOnAction(event -> {
             verify(project);
         });
         dBox.getChildren().add(deleteProjectButton);
         dBox.setAlignment(Pos.CENTER_RIGHT);
-        dBox.setPrefWidth(292);
+        dBox.setPrefWidth(20);
 
         newBox.getChildren().addAll(pBox, dBox);
         projectBox.getChildren().add(newBox);
@@ -117,6 +131,8 @@ public class ProjectWindowController {
             BorderPane content = fxmlLoader.load();
             taskWindowController.setTitleBox(project);
             centerStage.getChildren().set(0, content);
+            Scene scene = centerStage.getScene();
+            scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
         } catch (IOException e){
             e.printStackTrace();
         }

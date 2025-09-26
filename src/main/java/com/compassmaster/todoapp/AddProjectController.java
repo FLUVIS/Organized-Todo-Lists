@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.io.*;
+import java.util.Random;
 
 public class AddProjectController {
     @FXML
@@ -42,6 +43,9 @@ public class AddProjectController {
                         stage.close();
                     }
                 });
+
+                Random random = new Random();
+                addButton.getStyleClass().add("button" + Integer.toString(random.nextInt(5) + 1));
             }
         });
     }

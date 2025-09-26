@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="window" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:id="window" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="114.0" prefWidth="403.0">
          <children>
@@ -33,9 +33,9 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="44.0" prefWidth="600.0">
                <children>
-                  <Button fx:id="yesButton" mnemonicParsing="false" onAction="#yes" style="-fx-background-color: #38f558;" text="YES" />
+                  <Button fx:id="yesButton" mnemonicParsing="false" onAction="#yes" prefHeight="30.0" prefWidth="50.0" style="-fx-background-color: transparent;" />
                   <AnchorPane prefHeight="100.0" prefWidth="48.0" />
-                  <Button fx:id="noButton" mnemonicParsing="false" onAction="#no" style="-fx-background-color: #ff3333;" text="NO" />
+                  <Button fx:id="noButton" mnemonicParsing="false" onAction="#no" prefHeight="30.0" prefWidth="50.0" style="-fx-background-color: transparent;" />
                </children>
             </HBox>
          </children>

@@ -1,0 +1,156 @@
+.button1 {
+    -fx-background-color: transparent;
+    -fx-border-image-source: url("images/ButtonTexture1.png");
+    -fx-border-image-slice: 10 10 10 10 fill;
+    -fx-border-image-width: 10 10 10 10;
+    -fx-border-image-repeat: stretch;
+    -fx-padding: 0 5 0 0;
+    -fx-font-size: 16;
+}
+
+.button1:pressed {
+    -fx-background-color: transparent;
+    -fx-border-image-source: url("images/ButtonTexture1P.png");
+    -fx-border-image-slice: 10 10 10 10 fill;
+    -fx-border-image-width: 10 10 10 10;
+    -fx-border-image-repeat: stretch;
+    -fx-padding: 0 5 0 0;
+    -fx-font-size: 16;
+}
+
+.button1:pressed > .text {
+    -fx-translate-y: 8;
+    -fx-translate-x: 8;
+}
+
+.button2 {
+    -fx-background-color: transparent;
+    -fx-border-image-source: url("images/ButtonTexture2.png");
+    -fx-border-image-slice: 10 10 10 10 fill;
+    -fx-border-image-width: 10 10 10 10;
+    -fx-border-image-repeat: stretch;
+    -fx-padding: 0 5 0 0;
+    -fx-font-size: 16;
+}
+
+.button2:pressed {
+    -fx-background-color: transparent;
+    -fx-border-image-source: url("images/ButtonTexture2P.png");
+    -fx-border-image-slice: 10 10 10 10 fill;
+    -fx-border-image-width: 10 10 10 10;
+    -fx-border-image-repeat: stretch;
+    -fx-padding: 0 5 0 0;
+    -fx-font-size: 16;
+}
+
+.button2:pressed > .text {
+    -fx-translate-y: 8;
+    -fx-translate-x: 8;
+}
+
+.button3 {
+    -fx-background-color: transparent;
+    -fx-border-image-source: url("images/ButtonTexture3.png");
+    -fx-border-image-slice: 20 20 20 20 fill;
+    -fx-border-image-width: 10 10 10 10;
+    -fx-border-image-repeat: stretch;
+    -fx-padding: 0 5 0 0;
+    -fx-font-size: 16;
+}
+
+.button3:pressed {
+    -fx-background-color: transparent;
+    -fx-border-image-source: url("images/ButtonTexture3P.png");
+    -fx-border-image-slice: 20 20 20 20 fill;
+    -fx-border-image-width: 10 10 10 10;
+    -fx-border-image-repeat: stretch;
+    -fx-padding: 0 5 0 0;
+    -fx-font-size: 16;
+}
+
+.button3:pressed > .text {
+    -fx-translate-y: 8;
+    -fx-translate-x: 8;
+}
+
+.button4 {
+    -fx-background-color: transparent;
+    -fx-border-image-source: url("images/ButtonTexture4.png");
+    -fx-border-image-slice: 10 10 10 10 fill;
+    -fx-border-image-width: 10 10 10 10;
+    -fx-border-image-repeat: stretch;
+    -fx-padding: 0 5 0 0;
+    -fx-font-size: 16;
+}
+
+.button4:pressed {
+    -fx-background-color: transparent;
+    -fx-border-image-source: url("images/ButtonTexture4P.png");
+    -fx-border-image-slice: 10 10 10 10 fill;
+    -fx-border-image-width: 10 10 10 10;
+    -fx-border-image-repeat: stretch;
+    -fx-padding: 0 5 0 0;
+    -fx-font-size: 16;
+}
+
+.button4:pressed > .text {
+    -fx-translate-y: 8;
+    -fx-translate-x: 8;
+}
+
+.button5 {
+    -fx-background-color: transparent;
+    -fx-border-image-source: url("images/ButtonTexture5.png");
+    -fx-border-image-slice: 10 10 10 10 fill;
+    -fx-border-image-width: 10 10 10 10;
+    -fx-border-image-repeat: stretch;
+    -fx-padding: 0 5 0 0;
+    -fx-font-size: 16;
+}
+
+.button5:pressed {
+    -fx-background-color: transparent;
+    -fx-border-image-source: url("images/ButtonTexture5P.png");
+    -fx-border-image-slice: 10 10 10 10 fill;
+    -fx-border-image-width: 10 10 10 10;
+    -fx-border-image-repeat: stretch;
+    -fx-padding: 0 5 0 0;
+    -fx-font-size: 16;
+}
+
+.button5:pressed > .text {
+    -fx-translate-y: 8;
+    -fx-translate-x: 8;
+}
+
+.yesButton {
+    -fx-background-color: transparent;
+    -fx-background-image: url("images/YesButton.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 100% auto;
+    -fx-background-position: center;
+}
+
+.yesButton:pressed {
+    -fx-background-color: transparent;
+    -fx-background-image: url("images/YesButtonP.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 100% auto;
+    -fx-background-position: center;
+}
+
+.noButton {
+    -fx-background-color: transparent;
+    -fx-background-image: url("images/NoButton.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 100% auto;
+    -fx-background-position: center;
+}
+
+.noButton:pressed {
+    -fx-background-color: transparent;
+    -fx-background-image: url("images/NoButtonP.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 100% auto;
+    -fx-background-position: center;
+}

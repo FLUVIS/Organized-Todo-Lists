@@ -3,6 +3,7 @@ package com.compassmaster.todoapp;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
+import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
@@ -13,11 +14,15 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class TaskWindowController {
+    @FXML
+    private Button addTaskButton, backButton, clearButton;
     @FXML
     private VBox taskBox;
     @FXML
@@ -38,6 +43,15 @@ public class TaskWindowController {
                 addTask();
             } else if (code == KeyCode.ESCAPE) {
                 back();
+            }
+        });
+
+        addTaskButton.sceneProperty().addListener((obs, oldScene, newScene) -> {
+            if (newScene != null) {
+                Random random = new Random();
+                addTaskButton.getStyleClass().add("button" + Integer.toString(random.nextInt(5) + 1));
+                backButton.getStyleClass().add("button" + Integer.toString(random.nextInt(5) + 1));
+                clearButton.getStyleClass().add("button" + Integer.toString(random.nextInt(5) + 1));
             }
         });
     }
