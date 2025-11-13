@@ -1,3 +1,13 @@
+/* FONT STYLING */
+@font-face{
+    font-family: 'hand';
+    src: url("fonts/hand.ttf");
+}
+
+.label, .text, .button {
+    -fx-font-family: "hand";
+}
+
 /* BUTTON STYLING */
 
 .button1 {

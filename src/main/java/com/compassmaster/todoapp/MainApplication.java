@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.scene.text.Font;
 
 import java.io.IOException;
 
@@ -12,6 +13,7 @@ import static javafx.stage.StageStyle.UTILITY;
 public class MainApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
+        Font.loadFont(getClass().getResourceAsStream("/fonts/hand.ttf"), 16);
         FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("main-stage.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 630, 750);
         scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
