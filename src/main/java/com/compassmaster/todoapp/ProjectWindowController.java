@@ -102,12 +102,13 @@ public class ProjectWindowController {
         });
         pBox.getChildren().add(projectButton);
         pBox.setAlignment(Pos.CENTER_LEFT);
-        pBox.setPrefWidth(560);
+        pBox.setPrefWidth(550);
 
         HBox dBox = new HBox();
         int db = random.nextInt(5) + 1;
         Button deleteProjectButton = new Button("X");
-        deleteProjectButton.setMinHeight(deleteProjectButton.getWidth());
+        deleteProjectButton.setMinWidth(40);
+        deleteProjectButton.setMinHeight(40);
         deleteProjectButton.getStyleClass().add("button" + Integer.toString(db));
         deleteProjectButton.setOnAction(event -> {
             verify(project);
