@@ -15,6 +15,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -158,14 +159,16 @@ public class TaskWindowController {
     private void createTask(String task, char state, int id){
         HBox newBox = new HBox(10);
         newBox.setAlignment(Pos.CENTER_LEFT);
+        newBox.setStyle("-fx-min-height: 30;");
 
         Text text = new Text(task);
-        text.setFont(Font.font(16));
+        text.setFont(Font.font("Untitled1",20));
 
         CheckBox box = new CheckBox();
         box.setId(Integer.toString(id));
-        box.setPrefSize(16, 16);
+        box.setPrefSize(18, 18);
         box.getStyleClass().add("check");
+        box.setAlignment(Pos.CENTER_LEFT);
 
         newBox.getChildren().addAll(text, box);
 
