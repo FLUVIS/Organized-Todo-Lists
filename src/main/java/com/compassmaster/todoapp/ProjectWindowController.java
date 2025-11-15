@@ -36,8 +36,7 @@ public class ProjectWindowController {
 
         addProject.sceneProperty().addListener((obs, oldScene, newScene) -> {
             if (newScene != null) {
-                Random random = new Random();
-                addProject.getStyleClass().add("button" + Integer.toString(random.nextInt(5) + 1));
+                addProject.getStyleClass().add("plusButton");
             }
         });
     }

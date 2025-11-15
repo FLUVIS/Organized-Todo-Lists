@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -25,7 +26,7 @@ public class TaskWindowController {
     @FXML
     private VBox taskBox;
     @FXML
-    private Text titleBox;
+    private Label titleBox;
     @FXML
     private TextField taskField;
     private String project;
@@ -48,7 +49,7 @@ public class TaskWindowController {
         addTaskButton.sceneProperty().addListener((obs, oldScene, newScene) -> {
             if (newScene != null) {
                 Random random = new Random();
-                addTaskButton.getStyleClass().add("button" + Integer.toString(random.nextInt(5) + 1));
+                addTaskButton.getStyleClass().add("plusButton");
                 backButton.getStyleClass().add("button" + Integer.toString(random.nextInt(5) + 1));
                 clearButton.getStyleClass().add("button" + Integer.toString(random.nextInt(5) + 1));
                 taskField.getStyleClass().add("field");

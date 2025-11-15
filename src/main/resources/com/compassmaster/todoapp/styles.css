@@ -1,14 +1,27 @@
 /* FONT STYLING */
-@font-face{
-    font-family: 'hand';
-    src: url("fonts/hand.ttf");
-}
-
 .label, .text, .button {
-    -fx-font-family: "hand";
+    -fx-font-family: "Untitled1";
 }
 
 /* BUTTON STYLING */
+
+.plusButton {
+    -fx-background-color: transparent;
+    -fx-background-image: url("images/PlusButton.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 100% auto;
+    -fx-background-position: center;
+    -fx-min-width: 45;
+    -fx-min-height: 45;
+}
+
+.plusButton:pressed {
+    -fx-background-color: transparent;
+    -fx-background-image: url("images/PlusButtonP.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 100% auto;
+    -fx-background-position: center;
+}
 
 .button1 {
     -fx-background-color: transparent;
