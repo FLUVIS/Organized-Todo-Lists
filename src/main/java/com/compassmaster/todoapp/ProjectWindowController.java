@@ -6,6 +6,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.*;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -20,6 +21,8 @@ public class ProjectWindowController {
     private Button addProject;
     @FXML
     private VBox projectBox;
+    @FXML
+    private ScrollPane scrollPane;
 
     private AddProjectController addProjectController;
     private AnchorPane centerStage;
@@ -31,6 +34,8 @@ public class ProjectWindowController {
     @FXML
     private void initialize(){
         addProjectController = new AddProjectController();
+        scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        scrollPane.setFitToWidth(true);
         clearProjects();
         fillProjects();
 
@@ -103,6 +108,7 @@ public class ProjectWindowController {
         pBox.getChildren().add(projectButton);
         pBox.setAlignment(Pos.CENTER_LEFT);
         pBox.setPrefWidth(550);
+        pBox.setMinHeight(65);
 
         HBox dBox = new HBox();
         int db = random.nextInt(5) + 1;

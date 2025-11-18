@@ -3,10 +3,7 @@ package com.compassmaster.todoapp;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
@@ -15,7 +12,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
-import javafx.scene.text.TextAlignment;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -30,6 +26,8 @@ public class TaskWindowController {
     private Label titleBox;
     @FXML
     private TextField taskField;
+    @FXML
+    private ScrollPane scrollPane;
     private String project;
     private AnchorPane centerStage;
 
@@ -37,6 +35,9 @@ public class TaskWindowController {
     private void initialize(){
         clearTaskBox();
         fillTaskBox();
+
+        scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        scrollPane.setFitToWidth(true);
 
         centerStage.getScene().addEventFilter(KeyEvent.KEY_PRESSED, keyEvent -> {
             KeyCode code = keyEvent.getCode();
@@ -159,7 +160,7 @@ public class TaskWindowController {
     private void createTask(String task, char state, int id){
         HBox newBox = new HBox(10);
         newBox.setAlignment(Pos.CENTER_LEFT);
-        newBox.setStyle("-fx-min-height: 30;");
+        newBox.setMinHeight(30);
 
         Text text = new Text(task);
         text.setFont(Font.font("Untitled1",20));
