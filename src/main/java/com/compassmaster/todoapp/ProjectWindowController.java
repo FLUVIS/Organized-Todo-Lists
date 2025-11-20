@@ -49,6 +49,7 @@ public class ProjectWindowController {
     @FXML
     private void addProject(){
         try{
+            //Load addProject window resources
             FXMLLoader loader = new FXMLLoader(getClass().getResource("add-project-window.fxml"));
             loader.setController(addProjectController);
             Parent window = loader.load();
@@ -59,6 +60,12 @@ public class ProjectWindowController {
             addStage.setResizable(false);
             addStage.initStyle(StageStyle.UTILITY);
 
+            //Set window location to be over main window
+            addStage.setX(MainApplication.getX() + 141.1);
+            addStage.setY(MainApplication.getY() + 200);
+            // The magic numbers are to center the popup window in a place that looks nice
+
+            //Add listeners
             addStage.setOnHidden(windowEvent -> {
                 if(addProjectController.getAddName()) {
                     clearProjects();
@@ -66,6 +73,7 @@ public class ProjectWindowController {
                 }
             });
 
+            //Open window
             addProjectController.setAddName(false);
             addStage.show();
         } catch (IOException e) {
@@ -146,6 +154,7 @@ public class ProjectWindowController {
 
     private void verify(String project){
         try {
+            //Load verification window resources
             FXMLLoader loader = new FXMLLoader(getClass().getResource("verification-window.fxml"));
             VerificationController verificationController = new VerificationController();
             loader.setController(verificationController);
@@ -158,7 +167,13 @@ public class ProjectWindowController {
             stage.initModality(Modality.APPLICATION_MODAL);
             verificationController.setProject(project);
             verificationController.setStage(stage);
-            stage.show();
+
+            //Set window location to be over main window
+            stage.setX(MainApplication.getX() + 141.1);
+            stage.setY(MainApplication.getY() + 200);
+            // The magic numbers are to center the popup window in a place that looks nice
+
+            //Add listeners
             stage.setOnHidden(windowEvent -> {
                 if(verificationController.getDoDelete()){
                     deleteProject(project);
@@ -166,6 +181,9 @@ public class ProjectWindowController {
                     fillProjects();
                 }
             });
+
+            //Open window
+            stage.show();
         } catch (IOException e){
             e.printStackTrace();
         }
