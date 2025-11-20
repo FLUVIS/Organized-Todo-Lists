@@ -161,6 +161,7 @@ public class TaskWindowController {
         HBox newBox = new HBox(10);
         newBox.setAlignment(Pos.CENTER_LEFT);
         newBox.setMinHeight(30);
+        newBox.setMaxHeight(30);
 
         Text text = new Text(task);
         text.setFont(Font.font("Untitled1",20));
