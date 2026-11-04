@@ -3,8 +3,7 @@ package com.compassmaster.todoapp;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
@@ -16,14 +15,19 @@ import javafx.scene.text.Text;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class TaskWindowController {
     @FXML
+    private Button addTaskButton, backButton, clearButton;
+    @FXML
     private VBox taskBox;
     @FXML
-    private Text titleBox;
+    private Label titleBox;
     @FXML
     private TextField taskField;
+    @FXML
+    private ScrollPane scrollPane;
     private String project;
     private AnchorPane centerStage;
 
@@ -32,12 +36,25 @@ public class TaskWindowController {
         clearTaskBox();
         fillTaskBox();
 
+        scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        scrollPane.setFitToWidth(true);
+
         centerStage.getScene().addEventFilter(KeyEvent.KEY_PRESSED, keyEvent -> {
             KeyCode code = keyEvent.getCode();
             if(code == KeyCode.ENTER){
                 addTask();
             } else if (code == KeyCode.ESCAPE) {
                 back();
+            }
+        });
+
+        addTaskButton.sceneProperty().addListener((obs, oldScene, newScene) -> {
+            if (newScene != null) {
+                Random random = new Random();
+                addTaskButton.getStyleClass().add("plusButton");
+                backButton.getStyleClass().add("button" + Integer.toString(random.nextInt(5) + 1));
+                clearButton.getStyleClass().add("button" + Integer.toString(random.nextInt(5) + 1));
+                taskField.getStyleClass().add("field");
             }
         });
     }
@@ -143,13 +160,17 @@ public class TaskWindowController {
     private void createTask(String task, char state, int id){
         HBox newBox = new HBox(10);
         newBox.setAlignment(Pos.CENTER_LEFT);
+        newBox.setMinHeight(30);
+        newBox.setMaxHeight(30);
 
         Text text = new Text(task);
-        text.setFont(Font.font(16));
+        text.setFont(Font.font("Untitled1",20));
 
         CheckBox box = new CheckBox();
         box.setId(Integer.toString(id));
-        box.setPrefSize(16, 16);
+        box.setPrefSize(18, 18);
+        box.getStyleClass().add("check");
+        box.setAlignment(Pos.CENTER_LEFT);
 
         newBox.getChildren().addAll(text, box);
 
