@@ -56,6 +56,16 @@ jlink {
     launcher {
         name = 'ToDo'
     }
+    jpackage {
+        if (org.gradle.internal.os.OperatingSystem.current().isWindows()) {
+            imageOptions = ['--icon', 'build/resources/main/com/compassmaster/todoapp/images/Desktop Icon.ico']
+            installerOptions = ['--win-shortcut', '--win-menu']
+        } else if (org.gradle.internal.os.OperatingSystem.current().isMacOsX()) {
+            imageOptions = ['--icon', 'build/resources/main/com/compassmaster/todoapp/images/Desktop Icon.ico']
+        } else if (org.gradle.internal.os.OperatingSystem.current().isLinux()) {
+            imageOptions = ['--icon', 'build/resources/main/com/compassmaster/todoapp/images/Desktop Icon.ico']
+        }
+    }
 }
 
 jlinkZip {
