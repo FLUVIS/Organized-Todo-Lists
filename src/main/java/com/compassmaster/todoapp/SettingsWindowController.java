@@ -3,26 +3,20 @@ package com.compassmaster.todoapp;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Pos;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
+import org.controlsfx.control.SearchableComboBox;
 
 import java.io.*;
-import java.util.ArrayList;
 import java.util.Random;
 
 public class SettingsWindowController {
     @FXML
     private Button backButton, saveButton;
     @FXML
-    private ChoiceBox fontDropdown;
+    private SearchableComboBox fontDropdown;
     @FXML
     private RadioButton appStyleHandRadio, appStyleSleekRadio;
     @FXML
