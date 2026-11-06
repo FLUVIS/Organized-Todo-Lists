@@ -8,15 +8,18 @@ import javafx.stage.Stage;
 import javafx.scene.text.Font;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import static javafx.stage.StageStyle.DECORATED;
-import static javafx.stage.StageStyle.UTILITY;
 
 public class MainApplication extends Application {
     ApplicationController applicationController;
 
     private static double x, y;
+
+    private static List<String> fontList;
 
 
     @Override
@@ -24,6 +27,7 @@ public class MainApplication extends Application {
         //Load the font
         Font f = Font.loadFont(getClass().getResourceAsStream("/com/compassmaster/todoapp/fonts/hand.ttf"), 10);
         System.out.println("Loaded font: " + f.getName());
+        setFontList();
 
         //Initialize the main stage
         FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("main-stage.fxml"));
@@ -49,12 +53,22 @@ public class MainApplication extends Application {
         stage.show();
     }
 
+    private static void setFontList(){
+        ArrayList<String> arrayList = new ArrayList<>(Font.getFamilies());
+        arrayList.addFirst("Hand Drawn");
+        fontList = arrayList;
+    }
+
     public static double getX(){
         return x;
     }
 
     public static double getY(){
         return y;
+    }
+
+    public static List<String> getFontList(){
+        return fontList;
     }
 
     public static void main(String[] args) {

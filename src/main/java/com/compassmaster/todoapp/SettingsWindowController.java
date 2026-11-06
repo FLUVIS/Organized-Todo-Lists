@@ -1,5 +1,6 @@
 package com.compassmaster.todoapp;
 
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
@@ -57,6 +58,8 @@ public class SettingsWindowController {
                 saveButton.getStyleClass().add("button" + Integer.toString(random.nextInt(5) + 1));
             }
         });
+
+        fontDropdown.setItems(FXCollections.observableList(MainApplication.getFontList()));
     }
 
 
