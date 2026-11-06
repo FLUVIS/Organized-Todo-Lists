@@ -18,7 +18,7 @@ import java.util.Random;
 
 public class ProjectWindowController {
     @FXML
-    private Button addProject;
+    private Button addProject, settingsButton;
     @FXML
     private VBox projectBox;
     @FXML
@@ -42,6 +42,12 @@ public class ProjectWindowController {
         addProject.sceneProperty().addListener((obs, oldScene, newScene) -> {
             if (newScene != null) {
                 addProject.getStyleClass().add("plusButton");
+            }
+        });
+
+        settingsButton.sceneProperty().addListener((obs, oldScene, newScene) -> {
+            if (newScene != null) {
+                settingsButton.getStyleClass().add("plusButton");
             }
         });
     }
@@ -144,6 +150,22 @@ public class ProjectWindowController {
             fxmlLoader.setController(taskWindowController);
             BorderPane content = fxmlLoader.load();
             taskWindowController.setTitleBox(project);
+            centerStage.getChildren().set(0, content);
+            Scene scene = centerStage.getScene();
+            scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void openSettings(){
+        try{
+            SettingsWindowController settingsWindowController = new SettingsWindowController();
+            settingsWindowController.setCenterStage(centerStage);
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("settings-window.fxml"));
+            fxmlLoader.setController(settingsWindowController);
+            BorderPane content = fxmlLoader.load();
             centerStage.getChildren().set(0, content);
             Scene scene = centerStage.getScene();
             scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());

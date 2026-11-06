@@ -6,22 +6,13 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="600.0" styleClass="base" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <top>
       <BorderPane prefHeight="46.0" prefWidth="600.0" BorderPane.alignment="CENTER">
-         <right>
-            <Button fx:id="addProject" maxHeight="30.0" minHeight="40.0" mnemonicParsing="false" onAction="#addProject" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER" BorderPane.alignment="CENTER">
-               <font>
-                  <Font size="26.0" />
-               </font>
-               <padding>
-                  <Insets top="-7.0" />
-               </padding>
-            </Button>
-         </right>
          <center>
             <AnchorPane maxHeight="46.0" maxWidth="200.0" minHeight="0.0" minWidth="0.0" prefHeight="46.0" prefWidth="3.0" BorderPane.alignment="CENTER" />
          </center>
@@ -32,6 +23,32 @@
                </font>
             </Label>
          </left>
+         <right>
+            <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button fx:id="addProject" maxHeight="30.0" minHeight="40.0" mnemonicParsing="false" onAction="#addProject" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER">
+                     <font>
+                        <Font size="26.0" />
+                     </font>
+                     <padding>
+                        <Insets top="-7.0" />
+                     </padding>
+                  </Button>
+                  <AnchorPane prefHeight="47.0" prefWidth="11.0" />
+                  <Button fx:id="settingsButton" maxHeight="30.0" minHeight="40.0" mnemonicParsing="false" onAction="#openSettings" prefHeight="30.0" prefWidth="34.0" textAlignment="CENTER">
+                     <font>
+                        <Font size="26.0" />
+                     </font>
+                     <padding>
+                        <Insets top="-7.0" />
+                     </padding>
+                  </Button>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </HBox>
+         </right>
       </BorderPane>
    </top>
    <center>
