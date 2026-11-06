@@ -7,6 +7,7 @@ import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
+import javafx.scene.text.Font;
 import org.controlsfx.control.SearchableComboBox;
 
 import java.io.*;
@@ -16,13 +17,15 @@ public class SettingsWindowController {
     @FXML
     private Button backButton, saveButton;
     @FXML
-    private SearchableComboBox fontDropdown;
+    private SearchableComboBox<String> fontDropdown;
     @FXML
     private RadioButton appStyleHandRadio, appStyleSleekRadio;
     @FXML
-    private Spinner fontSizeSpinner;
+    private Spinner<Integer> fontSizeSpinner;
     @FXML
     private ScrollPane scrollPane;
+    @FXML
+    private Label fontSizeTest;
     private AnchorPane centerStage;
 
     @FXML
@@ -54,6 +57,15 @@ public class SettingsWindowController {
         });
 
         fontDropdown.setItems(FXCollections.observableList(MainApplication.getFontList()));
+
+        //TODO: set the third number in the factory to the current settings number
+        SpinnerValueFactory<Integer> factory = new SpinnerValueFactory.IntegerSpinnerValueFactory(11,96,12);
+        fontSizeSpinner.setValueFactory(factory);
+        fontSizeSpinner.valueProperty().addListener((observable, oldValue, newValue) -> {
+            fontSizeTest.setStyle("-fx-font-size: " + newValue + "px;");
+        });
+        //TODO: Populate the page with the current settings
+
     }
 
 
